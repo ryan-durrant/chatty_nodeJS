@@ -11,11 +11,12 @@ app.listen(3000, () => console.log("All good, captain"));
 var messages = [];
 
 app.get('/messages', function(req, res, next){
-  res.status(200).json({messages: messages});
+  res.status(200).json({messages});
 });
 
 app.post('/messages', function(req, res, next){
   console.log(req.body);
-  messages.push({ message: req.body.message, time: new Date() });
-  res.status(200).json({messages: messages});
+  messages.push({ username: req.body.username, message: req.body.message, time: new Date() });
+  console.log(messages);
+  res.status(200).json({messages});
 });
